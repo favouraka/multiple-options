@@ -24,14 +24,10 @@
         <div class="p-2 space-y-6 my-8 lg:w-1/3 md:w-2/3 mx-auto">
             <div 
                 x-data="{
-                    options : [
-                    'True', 'False'
+                    options: [
+                        'True', 'False'
                     ],
                     answer: 0,
-                    isAnswer: function(index){
-                       console.log(index)
-                       return this.answer == index ? true : false;
-                    },
                     addOption: function(){
                         this.options.push('');
                         this.$nextTick(() => { this.$refs.option.focus() });
