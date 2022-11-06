@@ -50,7 +50,7 @@
                                 <input type="radio" @click="answer = index" name="option" x-bind:value="answer" class="rounded-lg border-[1px] checked:bg-purple-500 w-4 h-4 rounded-full" name="" id="">
                                 <input x-ref="option" x-model="options[index]" required type="text" name="" id="" class="p-3 placeholder:text-sm flex-1"  placeholder="Enter option here...">
                                 <template x-if="(options.length > 2)">
-                                    <button @click="options.splice(index)">&times;</button>
+                                    <button @click.prevent="options.splice(index, 1)">&times;</button>
                                 </template>
                             </div>
                         </template>
