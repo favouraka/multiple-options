@@ -18,10 +18,10 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-neutral-300">
+<body class="bg-neutral-200">
     <!-- landing -->
     <div class="p-8 lg:mx-auto w-full">
-        <div class="p-2 space-y-6 my-8 lg:w-1/3 md:w-2/3 mx-auto">
+        <div class="p-2 space-y-6 my-8 lg:w-1/3 md:w-2/3 mx-auto ">
             <div 
                 x-data="{
                     options: [
@@ -33,37 +33,42 @@
                         this.$nextTick(() => { this.$refs.option.focus() });
                     }
                 }"
-                class="border-[1px] p-6 space-y-2 bg-white">
-                <p class="text-purple-900 font-semibold text-xl">Add question</p>
+                class="border-[1px] p-6 space-y-2 bg-white shadow-lg rounded-lg">
+                <p class="text-neutral-900 font-semibold text-xl">Add question</p>
                 <form action="#" class="flex flex-col gap-y-4 pt-4">
                     <!-- question text -->
                     <div class="space-y-2">
-                        <label class="text-purple-600" for="">Question</label>
-                        <textarea type="text" placeholder="Ask your question" class="p-3  w-full border-neutral-500 rounded-lg"></textarea>
+                        <label class="text-neutral-600" for="">Question</label>
+                        <textarea type="text" placeholder="Ask your question" class="p-3 focus:ring-purple-500 focus:ring-2  w-full border-neutral-500 bg-neutral-200 rounded-lg"></textarea>
                     </div>
                     <!-- options -->
 
-                    <label class="text-purple-600" for="">Options </label>
-                    <div class="flex flex-col divide-y-[1px]">
+                    <label class="text-neutral-600" for="">Options </label>
+                    <div class="flex flex-col gap-2">
                         <template x-for="(option, index) in options">
-                            <div class="flex gap-2 items-center">
-                                <input type="radio" @click="answer = index" name="option" x-bind:value="answer" class="rounded-lg border-[1px] checked:bg-purple-500 w-4 h-4 rounded-full" name="" id="">
-                                <input x-ref="option" x-model="options[index]" required type="text" name="" id="" class="p-3 placeholder:text-sm flex-1"  placeholder="Enter option here...">
+                            <div 
+                                x-bind:class="(answer == index) ? 'ring-green-500 flex gap-2 items-center ring-2 px-2 rounded-lg' : 'ring-purple-500 flex gap-2 items-center ring-2 px-2 rounded-lg'">
+                                <input type="radio" required x-bind:checked="index == 0" @click="answer = index" name="option" x-bind:value="answer" class="rounded-lg border-[1px] checked:bg-purple-500 w-4 h-4 rounded-full" name="" id="">
+                                <input x-ref="option" 
+                                    x-model="options[index]" 
+                                    required type="text"
+                                    class="p-3 placeholder:text-sm flex-1"  
+                                    placeholder="Enter option here...">
                                 <template x-if="(options.length > 2)">
                                     <button @click.prevent="options.splice(index, 1)">&times;</button>
                                 </template>
                             </div>
                         </template>
-                        <div class="flex gap-2 py-2 items-center mt-2" @click="addOption">
-                           <div class="p-1 px-3 bg-purple-500 text-white text-lg rounded-full">&plus;</div>
-                            <p class="">Add an option</p>
+                        <div class="flex gap-2 px-2 items-center ring-2 ring-neutral-300 rounded-lg" @click="addOption">
+                           <div class=" text-neutral-400 px-2 text-lg font-bold rounded-full">&plus;</div>
+                            <input disabled type="text" placeholder="Add another option " class=" py-3 placeholder:text-base">
                         </div>
                     </div>
 
                     <!-- explanation text -->
                     <div class="space-y-2">
-                        <label class="text-purple-600" for="">Explanation</label>
-                        <textarea type="text" placeholder="Explain your answer" class="p-3  w-full border-neutral-500 rounded-lg"></textarea>
+                        <label class="text-neutral-600" for="">Explanation</label>
+                        <textarea type="text" placeholder="Explain your answer" class="p-3 focus:ring-purple-500 focus:ring-2  w-full border-neutral-500 bg-neutral-200 rounded-lg"></textarea>
                     </div>
 
 
